@@ -28,6 +28,7 @@ uniform float near;
 uniform float far;
 uniform int worldTime;
 uniform int isEyeInWater;
+uniform float nightVision;
 
 const vec3 blocklightColor 	= 	vec3(0.929, 0.788, 0.431);
 const vec3 skylightColor 	= 	vec3(0.518, 0.631, 0.812);
@@ -108,7 +109,8 @@ void main() {
 	vec3 sunlight = sunlightColor * clamp(dot(worldLightVector, normal), 0.0, 1.0) * shadow * value;
 	vec3 moonlight = moonlightColor * clamp(dot(worldLightVector, normal), 0.0, 1.0) * shadow * (1.0 - value);
 
-	color.rgb *= blocklight + skylight + sunlight + moonlight;
+	color.rgb *= blocklight + skylight + sunlight + moonlight + vec3((depth0 - 0.9) / 0.3 * nightVision);
+	color.rgb = clamp((color.rgb - 0.5) / 0.9 + 0.5, 0.0, 1.0); // darken the darks and brighten the brights
 
 	if (isEyeInWater == 1) {
 		float fogFactor = 1.0 - exp(-0.05 * ((2.0 * near * far) / (far + near - (depth0 * 2.0 - 1.0) * (far - near)) - depth0));
@@ -123,5 +125,4 @@ void main() {
 	float fogFactor = exp(-FOG_DENSITY * (1.0 - dist));
 
 	color.rgb = mix(color.rgb, pow((skyColor * ambientLight + fogColor), vec3(2.2)), clamp(fogFactor, 0.0, 1.0));
-	//	color.rgb = pow(color.rgb, vec3(2.2));
 }
