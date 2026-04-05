@@ -135,4 +135,9 @@ void main() {
 	float fogFactor = exp(-FOG_DENSITY * (1.0 - dist));
 
 	color.rgb = mix(color.rgb, pow((skyColor * ambientLight + fogColor), vec3(2.2)), clamp(fogFactor, 0.0, 1.0));
+
+	dist = clamp((worldPosition0.y - 48) / 128, 0.0, 1.0);
+	fogFactor = exp(-FOG_DENSITY * (1.0 - dist));
+
+	color.rgb = mix(color.rgb, vec3(1.0), clamp(fogFactor, 0.0, 0.5));
 }
