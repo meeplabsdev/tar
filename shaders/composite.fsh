@@ -148,13 +148,30 @@ void main() {
 
 	/* Water */
 	if (isEyeInWater == 1) {
-		float fogFactor = 1.0 - exp(-0.05 * ((2.0 * near * far) / (far + near - (depth0 * 2.0 - 1.0) * (far - near)) - depth0));
+		if (length(worldPos0 - eyeCameraPosition) > 1.0) {
+			float edgeDepth = clamp(0.8 + worldPos1.y - worldPos0.y, 0.0, 1.0);
+			if (edgeDepth > 0.8 && edgeDepth < 1.0) {
+				edgeDepth = (edgeDepth - 0.8) / 0.2;
+				color.rgb = clamp(color.rgb + vec3(edgeDepth / 10.0), 0.0, 1.0);
+			}
+		}
+
+		float fogFactor = clamp(length(worldPos0 - eyeCameraPosition) / 16.0, 0.0, 1.0);
 		color.rgb = mix(color.rgb, vec3(0.0), fogFactor);
 	} else if (typeData.r == 1.0) {
+		float depth = length(worldPos0 - worldPos1);
+		float edgeDepth = clamp((1.0 + worldPos1.y - worldPos0.y) * (1.0 - worldPos1.y + worldPos0.y), 0.0, 1.0);
+
 		color.rgb = mix(color.rgb, waterColor / 4.0 + fogColor / 24.0, 0.2);
-		color.rgb = mix(color.rgb, color.rgb * clamp((1.0 - depth1) * far, 0.0, 1.0), clamp(length(worldPos0 - worldPos1) / 8.0, 0.0, 1.0));
-		float fogFactor = clamp(length(worldPos0 - worldPos1) / 16.0, 0.0, 1.0);
+		color.rgb = mix(color.rgb, color.rgb * clamp((1.0 - depth1) * far, 0.0, 1.0), clamp(depth / 8.0, 0.0, 1.0));
+
+		float fogFactor = clamp(depth / 16.0, 0.0, 1.0);
 		color.rgb = mix(color.rgb, vec3(0.0), fogFactor);
+
+		if (edgeDepth > 0.8 && edgeDepth < 1.0) {
+			edgeDepth = (edgeDepth - 0.8) / 0.2;
+			color.rgb = clamp(color.rgb + vec3(edgeDepth / 10.0), 0.0, 1.0);
+		}
 	}
 
 	/* Fog */
