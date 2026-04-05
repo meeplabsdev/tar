@@ -1,6 +1,6 @@
 #version 330 compatibility
 
-#include "/lib/shadowDistort.glsl"
+#include "/lib/shadows.glsl"
 
 out vec2 texcoord;
 out vec4 glcolor;
