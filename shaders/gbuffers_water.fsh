@@ -17,7 +17,7 @@ layout(location = 2) out vec4 encodedNormal;
 layout(location = 3) out vec4 typeData;
 
 void main() {
-	color = texture(gtexture, texcoord) * glcolor * 0.48;
+	color = texture(gtexture, texcoord) * 0.48;
 //	color *= texture(lightmap, lmcoord);
 
 	lightLevelData = vec4(lmcoord, 0.0, 1.0);

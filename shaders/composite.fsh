@@ -29,6 +29,9 @@ uniform float far;
 uniform int worldTime;
 uniform int isEyeInWater;
 uniform float nightVision;
+uniform vec3 cameraPosition;
+uniform float viewWidth;
+uniform float viewHeight;
 
 const vec3 blocklightColor 	= 	vec3(0.929, 0.788, 0.431);
 const vec3 skylightColor 	= 	vec3(0.518, 0.631, 0.812);
@@ -78,6 +81,8 @@ void main() {
 	vec3 normal = mat3(gbufferModelViewInverse) * (encodedNormal * 2 - 1);
 	vec3 lightVector = normalize(shadowLightPosition);
 	vec3 worldLightVector = mat3(gbufferModelViewInverse) * lightVector;
+	vec3 worldPosition0 = mat3(gbufferModelViewInverse) * projectAndDivide(gbufferProjectionInverse, vec3(texcoord, texture2D(depthtex0, texcoord)) * 2.0 - 1.0) + cameraPosition + gbufferModelViewInverse[3].xyz;
+	vec3 worldPosition1 = mat3(gbufferModelViewInverse) * projectAndDivide(gbufferProjectionInverse, vec3(texcoord, texture2D(depthtex1, texcoord)) * 2.0 - 1.0) + cameraPosition + gbufferModelViewInverse[3].xyz;
 
 	color = texture(colortex0, texcoord);
 
@@ -109,16 +114,21 @@ void main() {
 	vec3 sunlight = sunlightColor * clamp(dot(worldLightVector, normal), 0.0, 1.0) * shadow * value;
 	vec3 moonlight = moonlightColor * clamp(dot(worldLightVector, normal), 0.0, 1.0) * shadow * (1.0 - value);
 
-	color.rgb *= blocklight + skylight + sunlight + moonlight + vec3((depth0 - 0.9) / 0.3 * nightVision);
+	color.rgb *= blocklight + skylight + sunlight + moonlight + vec3((depth1 - 0.9) / 0.3 * nightVision);
 	color.rgb = clamp((color.rgb - 0.5) / 0.9 + 0.5, 0.0, 1.0); // darken the darks and brighten the brights
 
 	if (isEyeInWater == 1) {
 		float fogFactor = 1.0 - exp(-0.05 * ((2.0 * near * far) / (far + near - (depth0 * 2.0 - 1.0) * (far - near)) - depth0));
-		color.rgb = mix(color.rgb, waterColor, fogFactor);
+		color.rgb = mix(color.rgb, vec3(0.0), fogFactor);
 	} else if (typeData.r == 1.0) {
-		color *= 0.8;
-		color.rgb = mix(color.rgb, waterColor, 0.4);
-		color.rgb *= clamp((1.0 - depth1) * far, 0.0, 1.0);
+		if (length(viewPos) / far > 10) {
+			color.rgb = vec3(1.0, 0.0, 0.0);
+		} else {
+			color.rgb = mix(color.rgb, waterColor / 4.0 + fogColor / 24.0, 0.2);
+			color.rgb = mix(color.rgb, color.rgb * clamp((1.0 - depth1) * far, 0.0, 1.0), clamp(length(worldPosition0 - worldPosition1) / 8.0, 0.0, 1.0));
+			float fogFactor = clamp(length(worldPosition0 - worldPosition1) / 16.0, 0.0, 1.0);
+			color.rgb = mix(color.rgb, vec3(0.0), fogFactor);
+		}
 	}
 
 	float dist = length(viewPos) / far;
