@@ -8,15 +8,15 @@ This is a semi-realistic shader developed to improve the visuals of the game (in
 # Features
 | Feature                        | Screenshot                              |
 |--------------------------------|-----------------------------------------|
-| Wavy Water                     | <img width="427" height="240" src="https://github.com/user-attachments/assets/ec99cc55-c7fc-4db3-82e8-25c5d01c11cb" /> |
-| Glowing Beacon Beams           | <img width="427" height="240" src="https://github.com/user-attachments/assets/e43ec52a-33ca-4882-83bd-9242b5019791" /> |
-| Ambient Occlusion              | <img width="427" height="240" src="https://github.com/user-attachments/assets/d4b88cc4-eaaf-490a-984f-68cbbf2391ae" /> |
-| Dynamic Sun/Moon Light Colours | <img width="427" height="240" src="https://github.com/user-attachments/assets/67fb8764-d233-44ce-8fb0-8a25f2e8fe67" /><br><img width="427" height="240" src="https://github.com/user-attachments/assets/6c62bf31-d71c-43ab-9777-e168b1390f36" /><br><img width="427" height="240" src="https://github.com/user-attachments/assets/223cdcb5-0a2f-408e-a092-a129c3ad4995" /><br><img width="427" height="240" src="https://github.com/user-attachments/assets/20f4c209-f3bf-40a4-af89-4679dc28930e" /> |
-| Shadows                        | <img width="427" height="240" src="https://github.com/user-attachments/assets/c79f4d7a-9c80-4180-a78f-f11b7b5689fd" /> |
-| Coloured Shadows               | <img width="427" height="240" src="https://github.com/user-attachments/assets/f6ecfe26-7411-4c22-823a-b3af1c5096bd" /> |
-| Deep Water                     | <img width="427" height="240" src="https://github.com/user-attachments/assets/72c30f07-d779-4237-a566-d866671a15e3" /> |
-| Shallow Water                  | <img width="427" height="240" src="https://github.com/user-attachments/assets/0fc93554-5a8f-46e4-b50f-06cba7736989" /> |
-| Water Edges                    | <img width="427" height="240" src="https://github.com/user-attachments/assets/215f8249-77f7-4bc8-a1a3-fe2d767c66a9" /> |
-| World Fog                      | <img width="427" height="240" src="https://github.com/user-attachments/assets/5d1eb1fc-0773-4f30-9ebd-7e87a467c8d3" /> |
-| Height Fog                     | <img width="427" height="240" src="https://github.com/user-attachments/assets/07060576-3eb6-41ad-939b-f7ad0946b21f" /> |
-| True Darkness                  | <img width="427" height="240" src="https://github.com/user-attachments/assets/75c546d2-2c9e-48de-b120-3f0b985cae74" /> |
+| Wavy Water                     | <img width="427" height="240" alt="Wavy water" src="https://github.com/user-attachments/assets/ec99cc55-c7fc-4db3-82e8-25c5d01c11cb" /> |
+| Glowing Beacon Beams           | <img width="427" height="240" alt="Glowing beacon beams" src="https://github.com/user-attachments/assets/e43ec52a-33ca-4882-83bd-9242b5019791" /> |
+| Ambient Occlusion              | <img width="427" height="240" alt="Ambient occlusion" src="https://github.com/user-attachments/assets/d4b88cc4-eaaf-490a-984f-68cbbf2391ae" /> |
+| Dynamic Sun/Moon Light Colours | <img width="427" height="240" alt="The world at sunrise" src="https://github.com/user-attachments/assets/67fb8764-d233-44ce-8fb0-8a25f2e8fe67" /><br><img width="427" height="240" alt="The world during the day" src="https://github.com/user-attachments/assets/6c62bf31-d71c-43ab-9777-e168b1390f36" /><br><img width="427" height="240" alt="The world at sunset" src="https://github.com/user-attachments/assets/223cdcb5-0a2f-408e-a092-a129c3ad4995" /><br><img width="427" height="240" alt="The world during the night" src="https://github.com/user-attachments/assets/20f4c209-f3bf-40a4-af89-4679dc28930e" /> |
+| Shadows                        | <img width="427" height="240" alt="Shadows" src="https://github.com/user-attachments/assets/c79f4d7a-9c80-4180-a78f-f11b7b5689fd" /> |
+| Coloured Shadows               | <img width="427" height="240" alt="Coloured shadows" src="https://github.com/user-attachments/assets/f6ecfe26-7411-4c22-823a-b3af1c5096bd" /> |
+| Deep Water                     | <img width="427" height="240" alt="Deep water" src="https://github.com/user-attachments/assets/72c30f07-d779-4237-a566-d866671a15e3" /> |
+| Shallow Water                  | <img width="427" height="240" alt="Shallow water" src="https://github.com/user-attachments/assets/0fc93554-5a8f-46e4-b50f-06cba7736989" /> |
+| Water Edges                    | <img width="427" height="240" alt="Water edges" src="https://github.com/user-attachments/assets/215f8249-77f7-4bc8-a1a3-fe2d767c66a9" /> |
+| World Fog                      | <img width="427" height="240" alt="World fog" src="https://github.com/user-attachments/assets/5d1eb1fc-0773-4f30-9ebd-7e87a467c8d3" /> |
+| Height Fog                     | <img width="427" height="240" alt="Height fog" src="https://github.com/user-attachments/assets/07060576-3eb6-41ad-939b-f7ad0946b21f" /> |
+| True Darkness                  | <img width="427" height="240" alt="True darkness" src="https://github.com/user-attachments/assets/75c546d2-2c9e-48de-b120-3f0b985cae74" /> |
